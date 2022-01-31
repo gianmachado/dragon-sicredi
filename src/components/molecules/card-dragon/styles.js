@@ -59,6 +59,8 @@ export const ContainerInfoItem = styled.div`
   display: flex;
   gap: 4px;
   align-items: center;
+  margin-bottom: 2px;
+  border-bottom: 1px solid #f2f2f2;
 `;
 
 export const ContainerButton = styled.div`
