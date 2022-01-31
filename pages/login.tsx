@@ -22,6 +22,11 @@ export default function Login() {
     router.push("/");
   }
 
+  const handleKeyEnter = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      login(password);
+    }
+  };
   return (
     <Container>
       <ContainerShadowLogin>
@@ -34,6 +39,7 @@ export default function Login() {
           <Input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
+            onKeyDown={handleKeyEnter}
           />
 
           <ErrorMessage>{message}</ErrorMessage>
