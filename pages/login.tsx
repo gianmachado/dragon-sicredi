@@ -12,6 +12,7 @@ import {
   Input,
   ErrorMessage,
 } from "@/styles/Login";
+import { Routes } from "@/view-models/routes";
 
 export default function Login() {
   const [password, setPassword] = useState("");
@@ -19,7 +20,7 @@ export default function Login() {
   const router = useRouter();
 
   if (user) {
-    router.push("/");
+    router.push(Routes.Home);
   }
 
   const handleKeyEnter = (event: React.KeyboardEvent) => {
