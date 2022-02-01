@@ -20,7 +20,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Password Application
 For you access de application is required to learn the password. There is one way to access! 
-The method implements for this applications is [DMYYYY], like today is 01/02/2022, for access the application today password is: 122022 
+The method implements for this applications is [DMYYYY], like today is 01/02/2022, the password for access application is: 122022 
 The e-mail does not matter. Only layout.
 
 ## Learn More
