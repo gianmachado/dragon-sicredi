@@ -16,6 +16,8 @@ import {
 } from "./styles";
 import { IDragons } from "@/view-models/IDragons";
 import { format, formatDistanceStrict } from "date-fns";
+import { Routes } from "@/view-models/routes";
+import { useRouter } from "next/router";
 
 type CardDragonProps = {
   item: IDragons;
@@ -30,9 +32,10 @@ export default function CardDragon(props: CardDragonProps) {
   const { item, deleteItem } = props;
 
   const { createdAt, histories, id, name, type } = item;
+  const router = useRouter();
 
   const handleDelete = useCallback(async () => {
-    await deleteItem(id);
+    await deleteItem(id!);
   }, [deleteItem, id]);
 
   return (
@@ -80,7 +83,15 @@ export default function CardDragon(props: CardDragonProps) {
       </ContainerInfo>
 
       <ContainerButton>
-        <Button text="Edit" />
+        <Button
+          text="Edit"
+          onClick={() =>
+            router.push({
+              pathname: Routes.detailDragon,
+              query: { id: id },
+            })
+          }
+        />
         <Button
           text="Delete"
           style={{ background: "var(--bs-danger)" }}

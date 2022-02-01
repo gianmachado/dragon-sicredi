@@ -24,4 +24,5 @@ export const ContainerListDragon = styled.div`
 
 export const ContainerCreateDragon = styled.div`
   float: right;
+  margin-bottom: 10px;
 `;
