@@ -23,83 +23,103 @@ export const useDragon = () => {
   };
 
   const getAll = useCallback(async () => {
-    const { status, data } = await DragonService.getAll();
+    try {
+      const { status, data } = await DragonService.getAll();
 
-    if (status !== 200) swalAlert(status);
+      if (status !== 200) swalAlert(status);
 
-    setDragons(data);
+      setDragons(data);
+    } catch (e) {
+      swalAlert(404);
+    }
   }, []);
 
   const createDragon = useCallback(async (item: IDragons) => {
-    if (!item.name)
-      throw Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Name is required!",
-      });
-    else if (!item.type)
-      throw Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Type is required!",
-      });
+    try {
+      if (!item.name)
+        throw Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Name is required!",
+        });
+      else if (!item.type)
+        throw Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Type is required!",
+        });
 
-    if (!item.createdAt) item.createdAt = new Date();
-    var date = new Date(item.createdAt);
-    date.setDate(date.getDate() + 1);
+      if (!item.createdAt) item.createdAt = new Date();
+      var date = new Date(item.createdAt);
+      date.setDate(date.getDate() + 1);
 
-    item.createdAt = date;
+      item.createdAt = date;
 
-    const { status } = await DragonService.createDragon(item);
+      const { status } = await DragonService.createDragon(item);
 
-    swalAlert(status);
+      swalAlert(status);
 
-    return status;
+      return status;
+    } catch (e) {
+      swalAlert(404);
+    }
   }, []);
 
   const updateDragon = useCallback(async (item: IDragons) => {
-    if (!item.name)
-      throw Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Name is required!",
-      });
-    else if (!item.type)
-      throw Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Type is required!",
-      });
+    try {
+      if (!item.name)
+        throw Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Name is required!",
+        });
+      else if (!item.type)
+        throw Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Type is required!",
+        });
 
-    if (!item.createdAt) item.createdAt = new Date();
-    var date = new Date(item.createdAt);
-    date.setDate(date.getDate() + 1);
+      if (!item.createdAt) item.createdAt = new Date();
+      var date = new Date(item.createdAt);
+      date.setDate(date.getDate() + 1);
 
-    item.createdAt = date;
+      item.createdAt = date;
 
-    const { status } = await DragonService.updateDragon(item);
+      const { status } = await DragonService.updateDragon(item);
 
-    swalAlert(status);
+      swalAlert(status);
 
-    return status;
+      return status;
+    } catch (error) {
+      swalAlert(404);
+    }
   }, []);
 
   const deleteDragon = useCallback(
     async (id: string) => {
-      const { status } = await DragonService.deleteDragon(id);
-      await getAll();
+      try {
+        const { status } = await DragonService.deleteDragon(id);
+        await getAll();
 
-      swalAlert(status);
+        swalAlert(status);
+      } catch (error) {
+        swalAlert(404);
+      }
     },
     [getAll]
   );
 
   const getById = useCallback(async (id: string) => {
-    const { status, data } = await DragonService.getById(id);
+    try {
+      const { status, data } = await DragonService.getById(id);
 
-    if (status !== 200) swalAlert(status);
+      if (status !== 200) swalAlert(status);
 
-    return data;
+      return data;
+    } catch (error) {
+      swalAlert(404);
+    }
   }, []);
 
   return {
