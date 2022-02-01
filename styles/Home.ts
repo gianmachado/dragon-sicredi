@@ -17,3 +17,11 @@ export const ContainerOut = styled.div`
   width: 100%;
   justify-content: center;
 `;
+
+export const ContainerListDragon = styled.div`
+  width: 100%;
+`;
+
+export const ContainerCreateDragon = styled.div`
+  float: right;
+`;

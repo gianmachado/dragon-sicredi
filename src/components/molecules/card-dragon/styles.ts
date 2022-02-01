@@ -44,6 +44,8 @@ export const DescriptionName = styled.span`
   font-weight: 600;
   margin: 0 8px;
   color: var(--bs-dark-secondary);
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const ContainerInfo = styled.div`
@@ -58,9 +60,15 @@ export const ContainerInfo = styled.div`
 export const ContainerInfoItem = styled.div`
   display: flex;
   gap: 4px;
-  align-items: center;
+  align-items: baseline;
   margin-bottom: 2px;
   border-bottom: 1px solid #f2f2f2;
+`;
+
+export const InfoItemCustom = styled.span`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 export const ContainerButton = styled.div`
@@ -69,4 +77,5 @@ export const ContainerButton = styled.div`
   width: 90%;
   flex-direction: column;
   margin-top: 10px;
+  bottom: 0;
 `;
